@@ -8,4 +8,4 @@ The result outputs are in ./ScoringSoftware directory.
 
 The precision checker given by the official site is also included ./ScoringSoftware directory.
 
-To run this programme, just type: python training_pre
+A script to run this programme is already implemented in ./run.sh, do remember to change its permission using chmod.
