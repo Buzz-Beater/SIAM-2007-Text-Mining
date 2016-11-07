@@ -31,6 +31,16 @@ def text_predict(module_name):
         predict_confidence.append(rst_values)
     return predict_value, predict_confidence
 
+def confidence_converter(confidence):
+    confidence_values = []
+    for conf in confidence:
+        entry_conf_list = []
+        for key in conf:
+            global min_confidence
+            entry_conf_list.append(str(conf[key] - min_confidence))
+        confidence_values.append(entry_conf_list)
+    return confidence_values
+
 def list2csv(result, file):
     print "formating results"
     texts = []
@@ -44,14 +54,7 @@ threshold = 0
 min_confidence = 0
 text_train(module_name)
 (prediction, confidence) = text_predict(module_name)
-print min_confidence
-confidence_values = []
-for conf in confidence:
-    tmp = []
-    for key in conf:
-        tmp.append(str(conf[key] - min_confidence))
-    confidence_values.append(tmp)
 predict_out_file = open("ScoringSoftware/MyResult.csv", "w")
 confidence_out_file = open("ScoringSoftware/MyConfidence.csv", "w")
 list2csv(prediction, predict_out_file)
-list2csv(confidence_values, confidence_out_file)
+list2csv(confidence_converter(confidence), confidence_out_file)
