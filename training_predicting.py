@@ -39,7 +39,7 @@ def list2csv(result, file):
         texts.append(string)
     file.writelines(texts)
 
-module_name = "try2"
+module_name = "siam2007"
 threshold = 0
 min_confidence = 0
 text_train(module_name)
